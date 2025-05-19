@@ -122,15 +122,30 @@
 }
 
 - (void)setupBackButton {
+    [self setupNavigationBarHeight];
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
 
     UIImageSymbolConfiguration *config = [UIImageSymbolConfiguration configurationWithPointSize:20 weight:UIImageSymbolWeightBold];
-    UIImage *backImage = [[UIImage systemImageNamed:@"chevron.backward" withConfiguration:config] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIImage *backImage = [[UIImage systemImageNamed:@"chevron.backward" withConfiguration:config] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
 
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
     backButton.tintColor = UIColor.whiteColor;
     self.navigationItem.rightBarButtonItem = backButton;
+}
+
+- (void)setupNavigationBarHeight {
+    UIView *rectangleView = [[UIView alloc] init];
+    rectangleView.backgroundColor = [ColorTheme primary];
+    rectangleView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:rectangleView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [rectangleView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [rectangleView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [rectangleView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [rectangleView.heightAnchor constraintEqualToConstant:10.0]
+    ]];
 }
 
 - (void)backButtonTapped {

@@ -68,8 +68,8 @@
     [titleView addSubview:stackView];
 
     [NSLayoutConstraint activateConstraints:@[
-        [imageView.widthAnchor constraintEqualToConstant:36],
-        [imageView.heightAnchor constraintEqualToConstant:36],
+        [imageView.widthAnchor constraintEqualToConstant:45],
+        [imageView.heightAnchor constraintEqualToConstant:45],
         [stackView.centerXAnchor constraintEqualToAnchor:titleView.centerXAnchor],
         [stackView.centerYAnchor constraintEqualToAnchor:titleView.centerYAnchor],
         [stackView.leadingAnchor constraintGreaterThanOrEqualToAnchor:titleView.leadingAnchor],
@@ -77,6 +77,22 @@
     ]];
 
     self.navigationItem.titleView = titleView;
+    [self setupNavigationBarHeight];
+
+}
+
+- (void)setupNavigationBarHeight {
+    UIView *rectangleView = [[UIView alloc] init];
+    rectangleView.backgroundColor = [ColorTheme primary];
+    rectangleView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:rectangleView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [rectangleView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [rectangleView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [rectangleView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [rectangleView.heightAnchor constraintEqualToConstant:10.0]
+    ]];
 }
 
 - (void)setupView {

@@ -44,7 +44,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.navigationItem.titleView = ((UIViewController *)self.navigationController.viewControllers.firstObject).navigationItem.titleView;
     [self configureView];
     [self setupBackButton];
@@ -56,36 +56,51 @@
     } else if (self.viewType == AdTypeRewarded) {
         [self setRewardedView];
     }
-
+    
     self.autoShowSwitch.on = NO;
-
+    
     self.backgroundView.backgroundColor = ColorTheme.secondary;
     self.titleLabel.textColor = ColorTheme.primary;
     self.titleLabel.font = [UIFont titleFont];
     self.switchLabel.font = [UIFont bodyFont];
     self.autoShowSwitch.onTintColor = ColorTheme.switchOn;
-
+    
     self.loadLabel.text = [@"button.load" localized];
     self.loadLabel.font = [UIFont bodyFont];
     self.readyLabel.text = [@"button.ready" localized];
     self.readyLabel.font = [UIFont bodyFont];
     self.showLabel.text = [@"button.show" localized];
     self.showLabel.font = [UIFont bodyFont];
-
+    
     [self configureStatus];
 }
 
 - (void)setupBackButton {
+    [self setupNavigationBarHeight];
     self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.hidesBackButton = YES;
-
+    
     UIImageSymbolConfiguration *config = [UIImageSymbolConfiguration configurationWithPointSize:20 weight:UIImageSymbolWeightBold];
-    UIImage *backImage = [[UIImage systemImageNamed:@"chevron.backward" withConfiguration:config] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-
+    UIImage *backImage = [[UIImage systemImageNamed:@"chevron.backward" withConfiguration:config] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped)];
     backButton.tintColor = UIColor.whiteColor;
-
+    
     self.navigationItem.rightBarButtonItem = backButton;
+}
+
+- (void)setupNavigationBarHeight {
+    UIView *rectangleView = [[UIView alloc] init];
+    rectangleView.backgroundColor = [ColorTheme primary];
+    rectangleView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addSubview:rectangleView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [rectangleView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [rectangleView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [rectangleView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [rectangleView.heightAnchor constraintEqualToConstant:10.0]
+    ]];
 }
 
 - (void)backButtonTapped {

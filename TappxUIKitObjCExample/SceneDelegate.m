@@ -62,6 +62,8 @@
     
     appearance.backgroundColor = ColorTheme.primary;
     appearance.backgroundEffect = nil;
+    appearance.shadowColor = [UIColor clearColor];
+    appearance.shadowImage = [UIImage new];
     
     NSDictionary *titleAttributes = @{
         NSForegroundColorAttributeName: ColorTheme.secondaryVariant ?: UIColor.whiteColor,
