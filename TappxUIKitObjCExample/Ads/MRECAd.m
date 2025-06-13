@@ -21,7 +21,7 @@
 - (void)loadBanner {
     [self removeBanner];
     
-    self.tappxMREC = [[TappxBannerView alloc] initWithDelegate:self andSize:TappxBannerSize300x250 andPosition:TappxBannerPositionBottom];
+    self.tappxMREC = [[TappxBannerView alloc] initWithDelegate:self andSize:TappxBannerSize300x250];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(addTappxBannerViewToView:)]) {
         [self.delegate addTappxBannerViewToView:self.tappxMREC];
@@ -34,10 +34,10 @@
     [self.tappxMREC load];
 }
 
-- (void)loadBannerWithSize:(TappxBannerSize)size position:(TappxBannerPosition)position {
+- (void)loadBannerWithSize:(TappxBannerSize)size {
     [self removeBanner];
     
-    self.tappxMREC = [[TappxBannerView alloc] initWithDelegate:self andSize:size andPosition:position];
+    self.tappxMREC = [[TappxBannerView alloc] initWithDelegate:self andSize:size];
     
     if (self.delegate && [self.delegate respondsToSelector:@selector(addTappxBannerViewToView:)]) {
         [self.delegate addTappxBannerViewToView:self.tappxMREC];

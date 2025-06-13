@@ -29,7 +29,7 @@
 - (void)loadBanner {
     [self removeBanner];
 
-    self.bannerView = [[TappxBannerView alloc] initWithDelegate:self andSize:TappxBannerSmartBanner andPosition:TappxBannerPositionBottom];
+    self.bannerView = [[TappxBannerView alloc] initWithDelegate:self andSize:TappxBannerSmartBanner];
 
     if (self.bannerView && [self.delegate respondsToSelector:@selector(addTappxBannerViewToView:)]) {
         [self.delegate addTappxBannerViewToView:self.bannerView];
@@ -43,10 +43,10 @@
     [self.bannerView load];
 }
 
-- (void)loadBannerWithSize:(TappxBannerSize)size position:(TappxBannerPosition)position {
+- (void)loadBannerWithSize:(TappxBannerSize)size {
     [self removeBanner];
 
-    self.bannerView = [[TappxBannerView alloc] initWithDelegate:self andSize:size andPosition:position];
+    self.bannerView = [[TappxBannerView alloc] initWithDelegate:self andSize:size];
 
     if (self.bannerView && [self.delegate respondsToSelector:@selector(addTappxBannerViewToView:)]) {
         [self.delegate addTappxBannerViewToView:self.bannerView];

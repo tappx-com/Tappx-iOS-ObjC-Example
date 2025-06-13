@@ -34,7 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)loadBanner;
 
-- (void)loadBannerWithSize:(TappxBannerSize)size position:(TappxBannerPosition)position;
+- (void)loadBannerWithSize:(TappxBannerSize)size;
 - (void)removeBanner;
 
 - (void)updateLog:(NSString *)message;
