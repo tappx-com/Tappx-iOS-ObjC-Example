@@ -33,17 +33,9 @@
     _autoShow = enable;
 }
 
-- (void)loadWithTappxKey:(nullable NSString *)tappxKey {
+- (void)load {
     self.interstitialAd = [[TappxInterstitialAd alloc] initWithDelegate:self];
     [self.interstitialAd setAutoShowWhenReady:self.autoShow];
-
-    if (tappxKey != nil) {
-        TappxSettings *settings = [[TappxSettings alloc] init];
-        [settings setKeywords:@[tappxKey]];
-        [self.interstitialAd load:settings];
-        return;
-    }
-
     [self.interstitialAd load];
 }
 

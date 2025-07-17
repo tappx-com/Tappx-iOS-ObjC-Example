@@ -31,7 +31,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithDelegate:(id<RewardedAdDelegate>)delegate;
 
-- (void)loadWithTappxKey:(NSString * _Nullable)tappxKey;
+- (void)load;
 - (BOOL)isReady;
 - (void)showFromViewController:(UIViewController *)viewController;
 

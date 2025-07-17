@@ -155,9 +155,9 @@
 
 - (IBAction)loadAction:(id)sender {
     if (self.viewType == AdTypeInterstitial) {
-        [self.interstitialAd loadWithTappxKey:nil];
+        [self.interstitialAd load];
     } else {
-        [self.rewardedAd loadWithTappxKey:nil];
+        [self.rewardedAd load];
     }
 }
 

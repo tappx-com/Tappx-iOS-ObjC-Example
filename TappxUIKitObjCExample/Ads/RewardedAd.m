@@ -25,17 +25,10 @@
     return self;
 }
 
-- (void)loadWithTappxKey:(NSString * _Nullable)tappxKey {
+- (void)load {
     self.rewardedAd = [[TappxRewardedAd alloc] initWithDelegate:self];
     [self.rewardedAd setAutoShowWhenReady:NO];
-
-    if (tappxKey != nil) {
-        TappxSettings *settings = [[TappxSettings alloc] init];
-        [settings setKeywords:@[tappxKey]];
-        [self.rewardedAd load:settings];
-    } else {
-        [self.rewardedAd load];
-    }
+    [self.rewardedAd load];
 }
 
 - (BOOL)isReady {

@@ -27,7 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface InterstitialAd : NSObject
 
 - (instancetype)initWithDelegate:(id<InterstitialAdDelegate>)delegate;
-- (void)loadWithTappxKey:(nullable NSString *)tappxKey;
+- (void)load;
 - (BOOL)isReady;
 - (void)showFromViewController:(UIViewController *)viewController;
 - (void)setAutoShow:(BOOL)enable;
