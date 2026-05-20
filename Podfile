@@ -6,6 +6,6 @@ target 'TappxUIKitObjCExample' do
   use_frameworks!
 
   # Pods for TappxUIKitObjCExample
-  pod 'TappxSDK', '4.2.13'
+  pod 'TappxSDK', '4.2.14'
 
 end
